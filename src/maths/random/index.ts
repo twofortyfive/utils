@@ -1,15 +1,15 @@
 import isNaturalNumber from "../isNaturalNumber";
 
-type Boundaries = {
+export type Range = {
   min: number;
   max: number;
 };
 
-type RandomGenerator = () => number;
+export type RandomGenerator = () => number;
 
 export const random =
   (generator: RandomGenerator) =>
-  ({ min, max }: Boundaries): number => {
+  ({ min, max }: Range): number => {
     if (!isNaturalNumber(min) || !isNaturalNumber(max)) {
       throw Error("min and max are expected to be natural numbers");
     }
