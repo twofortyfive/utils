@@ -1,18 +1,33 @@
 {
-  "name": "js-kata-starter",
-  "version": "1.0.0",
-  "description": "Starter project for kata (Node, TypeScript, Jest, fast-check, ts-node)",
-  "main": "index.js",
+  "name": "@twofortyfive/utils",
+  "version": "0.0.1",
+  "description": "Various utils",
+  "source": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "main": "dist/main.js",
+  "module": "dist/module.js",
   "scripts": {
-    "test": "jest --watch --coverage",
-    "format": "prettier --write \"src/**/*.ts\""
+    "dev:clear": "rimraf node_modules .parcel-cache coverage dist",
+    "dev:test": "jest --watch --coverage",
+    "dev:format": "prettier --write \"src/**/*.ts\"",
+    "dev:lint": "eslint src",
+    "publish:test": "jest",
+    "publish:build": "parcel build",
+    "publish:ship": "npm run publish:test && npm run publish:build && npm publish --access public"
   },
   "devDependencies": {
+    "@parcel/packager-ts": "^2.9.2",
+    "@parcel/transformer-typescript-types": "^2.9.2",
     "@types/jest": "^29.5.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "eslint": "^8.42.0",
     "fast-check": "^3.8.2",
     "jest": "^29.5.0",
     "jest-extended": "^3.2.4",
+    "parcel": "^2.9.2",
     "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
@@ -22,23 +37,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mathieueveillard/js-kata-starter.git"
+    "url": "git+https://github.com/mathieueveillard/@twofortyfive/utils.git"
   },
-  "keywords": [
-    "starter",
-    "project",
-    "kata",
-    "node",
-    "typescript",
-    "jest",
-    "fast-check",
-    "pbt",
-    "ts-node"
-  ],
+  "keywords": [],
   "author": "Mathieu Eveillard",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mathieueveillard/js-kata-starter/issues"
+    "url": "https://github.com/mathieueveillard/@twofortyfive/utils/issues"
   },
-  "homepage": "https://github.com/mathieueveillard/js-kata-starter#readme"
+  "homepage": "https://github.com/mathieueveillard/@twofortyfive/utils#readme",
+  "targets": {
+    "default": {
+      "includeNodeModules": true
+    }
+  },
+  "engines": {
+    "node": "18.15.0"
+  }
 }
