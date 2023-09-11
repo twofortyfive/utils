@@ -5,5 +5,3 @@ export const readEnvironmentVariable = (name: string): string => {
   }
   return variable;
 };
-
-export default readEnvironmentVariable;

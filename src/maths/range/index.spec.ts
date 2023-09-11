@@ -1,6 +1,6 @@
 import fc from "fast-check";
-import range from ".";
-import sum from "../sum";
+import { range } from ".";
+import { sum } from "../sum";
 
 describe("Test of range()", () => {
   test("0-length range", () => {

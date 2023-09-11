@@ -1,5 +1,5 @@
-import range from "../../maths/range";
-import flow from "../flow";
+import { range } from "../../maths/range";
+import { flow } from "../flow";
 import { Transducer } from "../transducer";
 
 export const repeat =
@@ -8,5 +8,3 @@ export const repeat =
     const reducers = range(times).map(() => reducer);
     return flow(...reducers);
   };
-
-export default repeat;

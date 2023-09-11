@@ -1,4 +1,4 @@
-import reduceIf from ".";
+import { reduceIf } from ".";
 import { Reducer } from "../reducer";
 
 describe("Test of reduceIf()", () => {

@@ -1,4 +1,4 @@
-import flow from ".";
+import { flow } from ".";
 
 describe("Test of flow()", () => {
   test("Edge case (no-reducer)", () => {

@@ -24,5 +24,3 @@ export const lock = (name: string) => {
     relieve,
   };
 };
-
-export default lock;

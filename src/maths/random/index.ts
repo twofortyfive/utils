@@ -1,4 +1,4 @@
-import isNaturalNumber from "../isNaturalNumber";
+import { isNaturalNumber } from "../isNaturalNumber";
 
 export type Range = {
   min: number;
@@ -21,5 +21,3 @@ export const random =
     }
     return Math.round(min + (max - min) * generator());
   };
-
-export default random;

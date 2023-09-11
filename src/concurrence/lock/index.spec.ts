@@ -1,4 +1,4 @@
-import lock from ".";
+import { lock } from ".";
 
 describe("Test of lock()", () => {
   test("by default, a lock is available", () => {

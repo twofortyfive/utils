@@ -1,4 +1,4 @@
-import sum from ".";
+import { sum } from ".";
 
 describe("Test of sum()", () => {
   test("", () => {

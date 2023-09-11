@@ -1,4 +1,4 @@
-import isNaturalNumber from ".";
+import { isNaturalNumber } from ".";
 
 describe("Test of isNaturalNumber()", () => {
   test("Regular case: natural number", () => {

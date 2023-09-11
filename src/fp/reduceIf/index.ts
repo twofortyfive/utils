@@ -9,5 +9,3 @@ export const reduceIf =
     }
     return state;
   };
-
-export default reduceIf;

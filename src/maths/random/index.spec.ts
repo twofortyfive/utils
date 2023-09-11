@@ -1,6 +1,6 @@
 import fc from "fast-check";
-import random from ".";
-import isNaturalNumber from "../isNaturalNumber";
+import { random } from ".";
+import { isNaturalNumber } from "../isNaturalNumber";
 
 describe("Test of random()", () => {
   test("It should simply stretch and shift the range of randomness (min)", () => {

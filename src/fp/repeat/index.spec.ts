@@ -1,5 +1,5 @@
 import fc from "fast-check";
-import repeat from ".";
+import { repeat } from ".";
 
 describe("Test of repeat()", () => {
   test("Repeat 0 times", () => {
