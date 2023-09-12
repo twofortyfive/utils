@@ -1,4 +1,5 @@
 export * from "./flow";
+export * from "./IdentityFunctor";
 export * from "./lens";
 export * from "./reduceIf";
 export * from "./reducer";
