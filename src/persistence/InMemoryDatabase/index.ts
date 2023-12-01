@@ -5,9 +5,7 @@ export const createInMemoryDatabase = <Key extends string, Item extends {}>() =>
     database[key] = data;
   };
 
-  const getItem = (key: Key): Item => {
-    return database[key];
-  };
+  const getItem = (key: Key): Item => database[key];
 
   const updateItem = (key: Key, patch: Partial<Item>): void => {
     setItem(key, {

@@ -1,3 +1,1 @@
-export const and = (accumulator: boolean, current: boolean): boolean => {
-  return accumulator && current;
-};
+export const and = (accumulator: boolean, current: boolean): boolean => accumulator && current;

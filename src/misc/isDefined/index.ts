@@ -1,3 +1,1 @@
-export const isDefined = <T>(t: T): boolean => {
-  return !!t;
-};
+export const isDefined = <T>(t: T): boolean => !!t;
