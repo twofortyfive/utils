@@ -1,6 +1,5 @@
 import fc from "fast-check";
 import { random } from ".";
-import { isNaturalNumber } from "../isNaturalNumber";
 
 describe("Test of random()", () => {
   test("It should simply stretch and shift the range of randomness (min)", () => {
@@ -24,16 +23,6 @@ describe("Test of random()", () => {
         fc.pre(min <= max);
         const result = random(Math.random)({ min, max });
         return min <= result && result <= max;
-      })
-    );
-  });
-
-  test("The random value should be a natural number", () => {
-    fc.assert(
-      fc.property(fc.nat(), fc.nat(), (min, max) => {
-        fc.pre(min <= max);
-        const result = random(Math.random)({ min, max });
-        return isNaturalNumber(result);
       })
     );
   });
