@@ -7,3 +7,4 @@ export * from "./repeat";
 export * from "./result";
 export * from "./selector";
 export * from "./transducer";
+export * from "./unary";
