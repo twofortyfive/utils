@@ -23,7 +23,7 @@ describe("Test of random()", () => {
         fc.pre(min <= max);
         const result = random(Math.random)({ min, max });
         return min <= result && result <= max;
-      })
+      }),
     );
   });
 });

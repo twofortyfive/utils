@@ -5,4 +5,5 @@ export * from "./maths";
 export * from "./misc";
 export * from "./operations";
 export * from "./persistence";
+export * from "./time";
 export * from "./validation";

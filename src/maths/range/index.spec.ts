@@ -21,7 +21,7 @@ describe("Test of range()", () => {
         const suite = range(n);
         const reversedSuite = [...suite].reverse();
         return suite.reduce(sum, 0) + reversedSuite.reduce(sum, 0) === n * (n + 1);
-      })
+      }),
     );
   });
 
@@ -30,7 +30,7 @@ describe("Test of range()", () => {
       fc.property(fc.nat({ max: 100 }), (n) => {
         const suite = range(n);
         return range(n).every((i) => suite[i - 1] === i);
-      })
+      }),
     );
   });
 });

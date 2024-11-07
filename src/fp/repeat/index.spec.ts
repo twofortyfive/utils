@@ -17,7 +17,7 @@ describe("Test of repeat()", () => {
       fc.property(fc.nat({ max: 10 }), (n) => {
         const increment = (i: number) => i + 1;
         return repeat<number>(n)(increment)(0) === n;
-      })
+      }),
     );
   });
 });
