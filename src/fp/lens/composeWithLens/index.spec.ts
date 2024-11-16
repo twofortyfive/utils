@@ -1,46 +1,34 @@
 import { composeWithLens } from ".";
-import { Reducer } from "../../reducer";
 import { Lens } from "../Lens";
 
-type Speed = {
-  value: number;
-  unit: "km/h";
+type A = number;
+
+type B = {
+  a: A;
+  other: "other";
 };
 
-type Car = {
-  speed: Speed;
-  seats: number;
+const lens: Lens<B, A> = {
+  get: ({ a }) => a,
+  set: (b, a) => ({ ...b, a }),
 };
 
-const focusOnSpeed: Lens<Car, Speed> = {
-  get: ({ speed }) => speed,
-  set: (car, speed) => ({ ...car, speed }),
-};
+describe("Test of composeWithLens()", () => {
+  test("", () => {
+    // Given
+    const b: B = {
+      a: 42,
+      other: "other",
+    };
+    const reducer = composeWithLens(lens)((a) => a + 1);
 
-const car: Car = {
-  speed: {
-    value: 50,
-    unit: "km/h",
-  },
-  seats: 5,
-};
+    // When
+    const actual = reducer(b);
 
-const raiseSpeed: Reducer<Speed> = ({ value }) => ({
-  value: value + 10,
-  unit: "km/h",
-});
-
-const accelerate: Reducer<Car> = composeWithLens<Car, Speed>(focusOnSpeed)(raiseSpeed);
-
-describe("Composition with reducers", () => {
-  test("Composition with reducers", () => {
-    const actual = accelerate(car);
-    const expected: Car = {
-      speed: {
-        value: 60,
-        unit: "km/h",
-      },
-      seats: 5,
+    // Then
+    const expected: B = {
+      a: 43,
+      other: "other",
     };
     expect(actual).toEqual(expected);
   });

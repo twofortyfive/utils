@@ -1,50 +1,59 @@
-import { composeLenses } from ".";
+import { compose2Lenses, compose3Lenses } from ".";
 import { Lens } from "../Lens";
 
-type Speed = {
-  value: number;
-  unit: "km/h";
+type A = number;
+
+type B = {
+  a: A;
 };
 
-type Car = {
-  speed: Speed;
-  seats: number;
+type C = {
+  b: B;
 };
 
-const focusOnSpeed: Lens<Car, Speed> = {
-  get: ({ speed }) => speed,
-  set: (car, speed) => ({ ...car, speed }),
+const b2a: Lens<B, A> = {
+  get: ({ a }) => a,
+  set: (b, a) => ({ ...b, a }),
 };
 
-const car: Car = {
-  speed: {
-    value: 50,
-    unit: "km/h",
-  },
-  seats: 5,
+const c2b: Lens<C, B> = {
+  get: ({ b }) => b,
+  set: (c, b) => ({ ...c, b }),
 };
 
-const focusOnValue: Lens<Speed, number> = {
-  get: ({ value }) => value,
-  set: (speed, value) => ({ ...speed, value }),
-};
+describe("Compose 2 lenses", () => {
+  const lens = compose2Lenses(c2b, b2a);
 
-const focusOnSpeedValue = composeLenses<Car, Speed, number>(focusOnSpeed)(focusOnValue);
+  const c: C = { b: { a: 42 } };
 
-describe("Lenses compose easily", () => {
   test("Read", () => {
-    expect(focusOnSpeedValue.get(car)).toEqual(50);
+    expect(lens.get(c)).toEqual(42);
   });
 
   test("Write", () => {
-    const actual = focusOnSpeedValue.set(car, 60);
-    const expected: Car = {
-      speed: {
-        value: 60,
-        unit: "km/h",
-      },
-      seats: 5,
-    };
-    expect(actual).toEqual(expected);
+    expect(lens.get(lens.set(c, 0))).toEqual(0);
+  });
+});
+
+type D = {
+  c: C;
+};
+
+const d2c: Lens<D, C> = {
+  get: ({ c }) => c,
+  set: (d, c) => ({ ...d, c }),
+};
+
+describe("Compose 3 lenses", () => {
+  const lens = compose3Lenses(d2c, c2b, b2a);
+
+  const d: D = { c: { b: { a: 42 } } };
+
+  test("Read", () => {
+    expect(lens.get(d)).toEqual(42);
+  });
+
+  test("Write", () => {
+    expect(lens.get(lens.set(d, 0))).toEqual(0);
   });
 });
